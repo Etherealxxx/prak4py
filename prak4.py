@@ -166,6 +166,8 @@ def login_or_register():
             print('Некорректный выбор, пожалуйста, повторите.')
 
 def VIT(user_id):
+    item_name = None  
+
     while True:
         time.sleep(1)
 
@@ -201,72 +203,57 @@ def VIT(user_id):
                 print("Некорректный выбор, пожалуйста, повторите.")
                 continue
 
-        elif choice == "2":
-            choice3 = input('''Выберите что-то из этого:
-                1. Биг хит
-                2. Гранд
-                3. Гранд де люкс
-                : ''')
-            if choice3 == '1':
-                add_to_basket("Биг хит")
-                display_basket()
-            elif choice3 == '2':
-                add_to_basket("Гранд")
-                display_basket()
-            elif choice3 == '3':
-                add_to_basket("Гранд де люкс")
-                display_basket()
-            else:
-                print("Некорректный выбор, пожалуйста, повторите.")
-                continue
-
         elif choice == "3":
-            choice4 = input('''Выберите что-то из этого:
-                1. Добрый кола
-                2. Добрый апельсин
-                3. Молочный коктейль Ванильный
-                : ''')
-            if choice4 == '1':
-                add_to_basket("Добрый кола")
+            print('''Выберите что-то из напитков:
+                   1. Добрый кола
+                   2. Добрый апельсин
+                   3. Молочный коктейль Ванильный''')
+            choice_beverages = input(": ")
+            
+            if choice_beverages == '1':
+                item_name = "Добрый кола"
+                add_to_basket(item_name)
                 display_basket()
-            elif choice4 == '2':
-                add_to_basket("Добрый апельсин")
+            elif choice_beverages == '2':
+                item_name = "Добрый апельсин"
+                add_to_basket(item_name)
                 display_basket()
-            elif choice4 == '3':
-                add_to_basket("Молочный коктейль Ванильный")
+            elif choice_beverages == '3':
+                item_name = "Молочный коктейль Ванильный"
+                add_to_basket(item_name)
                 display_basket()
             else:
                 print("Некорректный выбор, пожалуйста, повторите.")
                 continue
 
         elif choice == "4":
-            choice5 = input('''Выберите что-то из этого:
-                1. Сырные колечки
-                2. Гранд фри
-                3. Снэк бокс
-                : ''')
-            if choice5 == '1':
-                add_to_basket("Сырные колечки")
-                display_basket()
+            print('''Выберите что-то из картошки и стартеров:
+                   1. Сырные колечки
+                   2. Гранд фри
+                   3. Снэк бокс''')
+            choice_potatoes_starters = input(": ")
+            
+            if choice_potatoes_starters == '1':
+                item_name = "Сырные колечки"
+                add_to_basket(item_name)
                 print("Эта позиция находится в стоп-листе. Выберите другую.")
-                return choice
-            elif choice5 == '2':
-                add_to_basket("Гранд фри")
+                continue
+            elif choice_potatoes_starters == '2':
+                item_name = "Гранд фри"
+                add_to_basket(item_name)
                 display_basket()
-            elif choice5 == '3':
-                add_to_basket("Снэк бокс")
+            elif choice_potatoes_starters == '3':
+                item_name = "Снэк бокс"
+                add_to_basket(item_name)
                 display_basket()
             else:
                 print("Некорректный выбор, пожалуйста, повторите.")
                 continue
 
-        else:
-            print("Некорректный выбор, пожалуйста, повторите.")
-            continue
-
         proceed = input("Желаете добавить еще что-то в корзину? (Да/Нет): ").lower()
         if proceed != 'да':
-            add_review(item_name)
+            if item_name:
+                add_review(item_name)
             address = input("Введите адрес для доставки (если необходимо): ").strip()
             if address:
                 save_delivery_address(user_id, address)
