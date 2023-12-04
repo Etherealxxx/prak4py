@@ -195,6 +195,7 @@ def VIT(user_id):
                 print(f"{item_name} добавлен в корзину!")
                 print("Эта позиция находится в стоп-листе. Выберите другую.")
                 continue
+            
             elif choice2 == '3':
                 item_name = "Кидз комбо"
                 add_to_basket(item_name)
@@ -202,6 +203,30 @@ def VIT(user_id):
             else:
                 print("Некорректный выбор, пожалуйста, повторите.")
                 continue
+
+        elif choice == "2":
+            print('''Выберите что-то из популярного:
+                   1. Биг хит
+                   2. Гранд
+                   3. Гранд де люкс''')
+            choice_popular = input(": ")
+            
+            if choice_popular == '1':
+                item_name = "Биг хит"
+                add_to_basket(item_name)
+                display_basket()
+            elif choice_popular == '2':
+                item_name = "Гранд"
+                add_to_basket(item_name)
+                display_basket()
+            elif choice_popular == '3':
+                item_name = "Гранд де люкс"
+                add_to_basket(item_name)
+                display_basket()
+            else:
+                print("Некорректный выбор, пожалуйста, повторите.")
+                continue
+
 
         elif choice == "3":
             print('''Выберите что-то из напитков:
